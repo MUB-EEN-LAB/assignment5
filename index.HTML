@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flip Card with Toggle</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px;
+    }
+
+    .card-container {
+      perspective: 1000px;
+      margin: 20px;
+    }
+
+    .flip-card {
+      width: 300px;
+      height: 200px;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+
+    .flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-inner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      background: white;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      background-color: #ffd1dc;
+    }
+
+    .toggle-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .toggle-btn:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Flip Card with Toggle Button</h2>
+
+  <div class="card-container">
+    <div class="flip-card" id="flipCard">
+      <div class="card-inner" id="cardInner">
+        <div class="card-front">
+          Front Side<br>
+          (Click Toggle)
+        </div>
+        <div class="card-back">
+          Back Side<br>
+          (Click Toggle)
+        </div>
+      </div>
+    </div>
+    <button class="toggle-btn" onclick="toggleFlip()">Toggle Flip</button>
+  </div>
+
+  <script>
+    function toggleFlip() {
+      const card = document.getElementById('cardInner');
+      card.classList.toggle('flipped');
+    }
+  </script>
+
+</body>
+</html>
